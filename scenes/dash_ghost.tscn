@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cwi3d4pie348g"]
+
+[ext_resource type="Script" uid="uid://b5xltbxse0vp7" path="res://scenes/dash_ghost.gd" id="1_geobj"]
+[ext_resource type="Texture2D" uid="uid://djr83fkvthqie" path="res://assets/knight/Outline/120x80_PNGSheets/_Dash.png" id="1_nk8it"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5a2s"]
+atlas = ExtResource("1_nk8it")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pvej"]
+atlas = ExtResource("1_nk8it")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_juktk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5a2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pvej")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DashGhost" type="AnimatedSprite2D" unique_id=2021261792]
+sprite_frames = SubResource("SpriteFrames_juktk")
+frame_progress = 0.55103904
+script = ExtResource("1_geobj")

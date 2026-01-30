@@ -1,0 +1,338 @@
+[gd_scene format=3 uid="uid://do7j81tdt3n2s"]
+
+[ext_resource type="Texture2D" uid="uid://q2p1t0kq47os" path="res://assets/knight/Outline/120x80_PNGSheets/_Idle.png" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://djr83fkvthqie" path="res://assets/knight/Outline/120x80_PNGSheets/_Dash.png" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://deviei0fpw7hl" path="res://assets/knight/Outline/120x80_PNGSheets/_Run.png" id="3_dqkch"]
+
+[sub_resource type="GDScript" id="GDScript_3vyb7"]
+script/source = "extends CharacterBody2D
+
+# ===== 1. SETTINGS (Global Scope) =====
+@export var speed: float = 250.0
+@export var acceleration: float = 1200.0
+@export var friction: float = 1000.0
+
+@export var jump_force: float = -400.0
+@export var gravity: float = 1000.0
+@export var fall_multiplier: float = 1.6 
+
+# --- DASH SETTINGS ---
+@export var dash_speed: float = 900.0
+@export var dash_duration: float = 0.2
+@export var dash_cooldown: float = 0.6
+var dash_timer: float = 0.0
+var dash_cooldown_timer: float = 0.0
+var is_dashing: bool = false
+var dash_direction: float = 1.0 
+
+# --- GAME FEEL SETTINGS ---
+@export var coyote_time: float = 0.15
+@export var jump_buffer_time: float = 0.15
+var coyote_timer: float = 0.0
+var jump_buffer_timer: float = 0.0
+
+# ===== 2. NODES (Global Scope - MUST BE HERE) =====
+# This line must NOT be inside a function. 
+# It must have NO indentation (no spaces/tabs before it).
+@on_ready var sprite = $idle
+
+# ===== 3. PHYSICS PROCESS =====
+func _physics_process(delta: float) -> void:
+	# --- DASH TRIGGER ---
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and dash_cooldown_timer <= 0 and not is_dashing:
+		start_dash()
+
+	if is_dashing:
+		handle_dash(delta)
+		return 
+
+	dash_cooldown_timer -= delta
+
+	# --- GRAVITY ---
+	if not is_on_floor():
+		coyote_timer -= delta
+		var current_gravity = gravity
+		if velocity.y > 0:
+			current_gravity *= fall_multiplier
+		velocity.y += current_gravity * delta
+	else:
+		coyote_timer = coyote_time
+
+	# --- JUMP LOGIC ---
+	if Input.is_key_pressed(KEY_W):
+		jump_buffer_timer = jump_buffer_time
+	else:
+		jump_buffer_timer -= delta
+
+	if jump_buffer_timer > 0 and coyote_timer > 0:
+		velocity.y = jump_force
+		jump_buffer_timer = 0
+		coyote_timer = 0
+
+	if not Input.is_key_pressed(KEY_W) and velocity.y < 0:
+		velocity.y *= 0.5
+
+	# --- MOVEMENT ---
+	var direction = 0
+	if Input.is_key_pressed(KEY_D): direction += 1
+	if Input.is_key_pressed(KEY_A): direction -= 1
+	
+	if direction != 0:
+		dash_direction = direction
+		velocity.x = move_toward(velocity.x, direction * speed, acceleration * delta)
+	else:
+		velocity.x = move_toward(velocity.x, 0, friction * delta)
+
+	move_and_slide()
+	update_animations(direction)
+
+# ===== 4. HELPER FUNCTIONS =====
+
+func start_dash():
+	is_dashing = true
+	dash_timer = dash_duration
+	dash_cooldown_timer = dash_cooldown
+	# Ensure you have an animation named \"dash\"
+	if sprite.sprite_frames.has_animation(\"dash\"):
+		sprite.play(\"dash\")
+
+func handle_dash(delta):
+	dash_timer -= delta
+	if dash_timer <= 0:
+		is_dashing = false
+	
+	velocity.y = 0 
+	velocity.x = dash_direction * dash_speed
+	move_and_slide()
+
+func update_animations(direction):
+	if is_dashing: return 
+
+	# Flip sprite
+	if direction > 0:
+		sprite.flip_h = false
+	elif direction < 0:
+		sprite.flip_h = true
+
+	# Play animations (Check if names exist to avoid errors)
+	if not is_on_floor():
+		sprite.play(\"jump\")
+	elif direction != 0:
+		sprite.play(\"run\")
+	else:
+		sprite.play(\"idle\")
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(240, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(360, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(480, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(600, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(720, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(840, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(960, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(1080, 0, 120, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3v2ag"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2els")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhqgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqkch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjrip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smehm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur7pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4r1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2wvv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jej6c"]
+height = 36.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f1ej7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v2ag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jej6c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
+atlas = ExtResource("3_dqkch")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
+atlas = ExtResource("3_dqkch")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfm1y"]
+atlas = ExtResource("3_dqkch")
+region = Rect2(240, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
+atlas = ExtResource("3_dqkch")
+region = Rect2(360, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r5pv"]
+atlas = ExtResource("3_dqkch")
+region = Rect2(480, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60mlk"]
+atlas = ExtResource("3_dqkch")
+region = Rect2(600, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4ail"]
+atlas = ExtResource("3_dqkch")
+region = Rect2(720, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
+atlas = ExtResource("3_dqkch")
+region = Rect2(840, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ni07"]
+atlas = ExtResource("3_dqkch")
+region = Rect2(960, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l71n6"]
+atlas = ExtResource("3_dqkch")
+region = Rect2(1080, 0, 120, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ke2ow"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oprun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8ls1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfm1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fulsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r5pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60mlk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4ail")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a38lo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ni07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l71n6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="player" type="CharacterBody2D" unique_id=1194610403]
+script = SubResource("GDScript_3vyb7")
+speed = null
+acceleration = null
+friction = null
+jump_force = null
+gravity = null
+fall_multiplier = null
+dash_speed = null
+dash_duration = null
+dash_cooldown = null
+coyote_time = null
+jump_buffer_time = null
+
+[node name="idle" type="AnimatedSprite2D" parent="." unique_id=2112699995]
+position = Vector2(27, -42)
+scale = Vector2(1, 1.0375)
+sprite_frames = SubResource("SpriteFrames_3v2ag")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1997322621]
+position = Vector2(22, -21)
+shape = SubResource("CapsuleShape2D_jej6c")
+
+[node name="dash" type="AnimatedSprite2D" parent="." unique_id=757680442]
+position = Vector2(36, 29)
+sprite_frames = SubResource("SpriteFrames_f1ej7")
+
+[node name="run" type="AnimatedSprite2D" parent="." unique_id=1454128505]
+position = Vector2(126, 53)
+sprite_frames = SubResource("SpriteFrames_ke2ow")
+frame_progress = 0.46332404
