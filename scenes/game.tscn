@@ -1,14 +1,13 @@
-[gd_scene format=3 uid="uid://dt8tpv5t5pshb"]
+[gd_scene format=4 uid="uid://dt8tpv5t5pshb"]
 
-[ext_resource type="PackedScene" uid="uid://cui7b3nwi66ls" path="res://scenes/animatable_body_2d.tscn" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://do7j81tdt3n2s" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="Texture2D" uid="uid://bvbp87eutf3eo" path="res://assets/world_tileset.png" id="2_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://bvbp87eutf3eo" path="res://assets/world/world_tileset.png" id="2_iywne"]
 [ext_resource type="PackedScene" uid="uid://b5p4n102ab4wm" path="res://scenes/deadzone.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://12eo7kywn4f8" path="res://scenes/enemy.tscn" id="5_iywne"]
 [ext_resource type="Texture2D" uid="uid://bnk6dalfghh5w" path="res://assets/Heart.png" id="5_p57ef"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
-texture = ExtResource("2_yqjtg")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
+texture = ExtResource("2_iywne")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -28,11 +27,11 @@ texture = ExtResource("2_yqjtg")
 8:0/0 = 0
 8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:0/0 = 0
-9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.6484547, 8, -5.747551, 8, 0.99095726, -8, 1.0900526)
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -7.0357947, 8, -0.6936693, -8, -2.0810099)
 10:0/0 = 0
-10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.6484547, 8, -5.747551, 8, 0.99095726, -8, 1.0900526)
+10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:0/0 = 0
-11:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -6.342125, 5.6484537, -8, 8, -5.9457417, 8, -1.6846266, -8, -0.19819069)
+11:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -7.0357947, 8, -0.6936693, -8, -2.0810099)
 0:1/0 = 0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:1/0 = 0
@@ -52,36 +51,28 @@ texture = ExtResource("2_yqjtg")
 8:1/0 = 0
 8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:1/0 = 0
-9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 0.29728603, -6.936699, 8, -6.5403156, 8, -3.3692532, 8, 0.19819164, -5.2520723, -0.89186096, -8, -2.2792006)
+9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -7.0357947, 8, -0.6936693, -8, -2.0810099)
 10:1/0 = 0
-10:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.6484547, 8, -5.747551, 8, 0.99095726, -8, 1.0900526)
+10:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.035795, -6.2430286, 8, -6.2430286, 8, 0.7927656, -8, 0.8918619)
 11:1/0 = 0
-11:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -6.342125, 5.6484537, -8, 8, -5.9457417, 8, -1.6846266, -8, -0.19819069)
+11:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.9457417, 8, -8, 8, -2.2792006, -8, -0.39638233)
 0:2/0 = 0
-0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:2/0 = 0
-1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:2/0 = 0
-2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:2/0 = 0
-3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:2/0 = 0
-4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:2/0 = 0
-5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:2/0 = 0
-6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:2/0 = 0
-7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:2/0 = 0
-8:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:2/0 = 0
-9:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 0.29728603, -6.936699, 8, -6.5403156, 8, -3.3692532, 8, 0.19819164, -5.2520723, -0.89186096, -8, -2.2792006)
+9:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.035795, -6.2430286, 8, -6.2430286, 8, 0.7927656, -8, 0.8918619)
 10:2/0 = 0
-10:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+10:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.035795, -6.2430286, 8, -6.2430286, 8, 0.7927656, -8, 0.8918619)
 11:2/0 = 0
-11:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 0.29728603, -6.936699, 8, -6.5403156, 8, -3.3692532, 8, 0.19819164, -5.2520723, -0.89186096, -8, -2.2792006)
+11:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.9457417, 8, -8, 8, -2.2792006, -8, -0.39638233)
 0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:3/0 = 0
 2:3/0 = 0
 5:3/0 = 0
@@ -90,6 +81,7 @@ texture = ExtResource("2_yqjtg")
 8:3/0 = 0
 9:3/0 = 0
 0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:4/0 = 0
 5:4/0 = 0
 6:4/0 = 0
@@ -97,6 +89,7 @@ texture = ExtResource("2_yqjtg")
 8:4/0 = 0
 9:4/0 = 0
 0:5/0 = 0
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:5/0 = 0
 5:5/0 = 0
 6:5/0 = 0
@@ -166,9 +159,9 @@ texture = ExtResource("2_yqjtg")
 2:4/size_in_atlas = Vector2i(3, 3)
 2:4/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_lbhrr"]
+[sub_resource type="TileSet" id="TileSet_u5sy4"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_lnu2h")
+sources/0 = SubResource("TileSetAtlasSource_p57ef")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u5sy4"]
 atlas = ExtResource("5_p57ef")
@@ -178,33 +171,23 @@ region = Rect2(32, 0, 32, 88)
 atlas = ExtResource("5_p57ef")
 region = Rect2(8, 0, 24, 88)
 
-[node name="game" type="Node2D" unique_id=2115339723]
+[node name="level1" type="Node2D" unique_id=2115339723]
 position = Vector2(11, -2)
 
 [node name="world" type="Node" parent="." unique_id=1974212001]
 
-[node name="AnimatableBody2D" parent="world" unique_id=126109820 instance=ExtResource("1_lnu2h")]
-position = Vector2(233, 236)
-
-[node name="AnimatableBody2D2" parent="world" unique_id=116312102 instance=ExtResource("1_lnu2h")]
-position = Vector2(234, 190)
-
-[node name="AnimatableBody2D3" parent="world" unique_id=406935906 instance=ExtResource("1_lnu2h")]
-position = Vector2(238, 143)
-
-[node name="TileMap" type="TileMap" parent="world" unique_id=1338646280]
-position = Vector2(159, 233)
-tile_set = SubResource("TileSet_lbhrr")
-format = 2
-layer_0/tile_data = PackedInt32Array(262143, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 327679, 0, 1, 393215, 0, 1, 327680, 0, 1, 393217, 0, 1, 393218, 0, 1, 393219, 0, 1, 393220, 0, 1, 327684, 0, 1, 327685, 0, 1, 327686, 0, 1, 327687, 0, 1, 262151, 0, 1, 262150, 0, 1, 262149, 0, 1, 262148, 0, 1, 262147, 0, 1, 262146, 0, 1, 262145, 0, 1, 262144, 0, 1, 327681, 0, 1, 327682, 0, 1, 327683, 0, 1, 393216, 0, 1, 458751, 0, 1, 393221, 0, 1, 393222, 0, 1, 393223, 0, 1, 131082, 0, 1, 196618, 0, 1, 262154, 0, 1, 327690, 0, 1, 393226, 0, 1, 131084, 0, 1, 196620, 0, 1, 262156, 0, 1, 327692, 0, 1, 393228, 0, 1, 393227, 0, 1, 327691, 0, 1, 262155, 0, 1, 196619, 0, 1, 131083, 0, 1, 262161, 0, 0, 327697, 0, 1, 393233, 0, 1, 393236, 0, 1, 327700, 0, 1, 262164, 0, 0, 262163, 0, 0, 262162, 0, 0, 327698, 0, 1, 393234, 0, 1, 393235, 0, 1, 327699, 0, 1, -327668, 0, 1, -393203, 0, 1, -327667, 0, 1, -393202, 0, 1, -327666, 0, 1, -393201, 0, 1, -458744, 0, 0, -393208, 0, 1, -327672, 0, 1, -458743, 0, 0, -393207, 0, 1, -327671, 0, 1, -458742, 0, 0, -393206, 0, 1, -327670, 0, 1, -458741, 0, 0, -393205, 0, 1, -327669, 0, 1, -524276, 0, 1, -458740, 0, 1, -393204, 0, 1, -589811, 0, 0, -524275, 0, 1, -458739, 0, 1, -589810, 0, 0, -524274, 0, 1, -458738, 0, 1, -589809, 0, 0, -524273, 0, 1, -458737, 0, 1, -589808, 0, 0, -524272, 0, 1, -458736, 0, 1, 458740, 0, 0, 458741, 0, 0, 458742, 0, 0, 458743, 0, 0, 458744, 0, 0, 458745, 0, 0, 458746, 0, 0, 458747, 0, 0, 458748, 0, 0, 458749, 0, 0, 458750, 0, 0)
-
 [node name="Deadzone" parent="world" unique_id=808173851 instance=ExtResource("4_lbhrr")]
 position = Vector2(99, 271)
 
+[node name="TileMapLayer" type="TileMapLayer" parent="world" unique_id=337975200]
+tile_map_data = PackedByteArray("AAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAAAAUAAAAAAAEAAAABAAUAAAAAAAEAAAABAAYAAAAAAAEAAAACAAYAAAAAAAEAAAADAAYAAAAAAAEAAAAEAAYAAAAAAAEAAAAFAAYAAAAAAAEAAAAGAAYAAAAAAAEAAAAHAAYAAAAAAAEAAAAIAAYAAAAAAAEAAAAJAAYAAAAAAAEAAAAJAAUAAAAAAAEAAAAKAAUAAAAAAAEAAAALAAUAAAAAAAEAAAAMAAUAAAAAAAEAAAAMAAYAAAAAAAEAAAALAAYAAAAAAAEAAAAKAAYAAAAAAAEAAAAIAAcAAAAAAAEAAAAHAAcAAAAAAAEAAAAAAAYAAAAAAAEAAAAAAAcAAAAAAAEAAAAAAAgAAAAAAAEAAAABAAgAAAAAAAEAAAABAAkAAAAAAAEAAAABAAoAAAAAAAEAAAACAAoAAAAAAAEAAAAAAAoAAAAAAAEAAAD//woAAAAAAAEAAAD//wkAAAAAAAEAAAD//wgAAAAAAAEAAAAAAAkAAAAAAAEAAAACAAgAAAAAAAEAAAADAAgAAAAAAAEAAAADAAcAAAAAAAEAAAACAAcAAAAAAAEAAAABAAcAAAAAAAEAAAACAAkAAAAAAAEAAAADAAkAAAAAAAEAAAADAAoAAAAAAAEAAAAEAAoAAAAAAAEAAAAFAAoAAAAAAAEAAAAGAAoAAAAAAAEAAAAHAAoAAAAAAAEAAAAIAAoAAAAAAAEAAAAJAAoAAAAAAAEAAAAKAAoAAAAAAAEAAAALAAoAAAAAAAEAAAAMAAoAAAAAAAEAAAAMAAkAAAAAAAEAAAAMAAgAAAAAAAEAAAAMAAcAAAAAAAEAAAALAAcAAAAAAAEAAAALAAgAAAAAAAEAAAAKAAgAAAAAAAEAAAAJAAgAAAAAAAEAAAAKAAcAAAAAAAEAAAAJAAcAAAAAAAEAAAAGAAcAAAAAAAEAAAAFAAcAAAAAAAEAAAAEAAcAAAAAAAEAAAAEAAgAAAAAAAEAAAAFAAgAAAAAAAEAAAAGAAgAAAAAAAEAAAAHAAgAAAAAAAEAAAAIAAkAAAAAAAEAAAAJAAkAAAAAAAEAAAAKAAkAAAAAAAEAAAALAAkAAAAAAAEAAAAHAAkAAAAAAAEAAAAGAAkAAAAAAAEAAAAFAAkAAAAAAAEAAAAEAAkAAAAAAAEAAAAIAAgAAAAAAAEAAAAIAAUAAAAAAAEAAAAHAAUAAAAAAAEAAAAGAAUAAAAAAAEAAAAFAAUAAAAAAAEAAAAEAAUAAAAAAAEAAAADAAUAAAAAAAEAAAACAAUAAAAAAAEAAAAQAAQAAAAAAAAAAAARAAQAAAAAAAAAAAASAAQAAAAAAAAAAAAQAAUAAAAAAAEAAAAQAAYAAAAAAAEAAAAQAAcAAAAAAAEAAAAQAAgAAAAAAAEAAAAQAAkAAAAAAAEAAAAQAAoAAAAAAAEAAAARAAoAAAAAAAEAAAASAAoAAAAAAAEAAAASAAUAAAAAAAEAAAARAAUAAAAAAAEAAAARAAYAAAAAAAEAAAASAAYAAAAAAAEAAAASAAkAAAAAAAEAAAARAAkAAAAAAAEAAAARAAgAAAAAAAEAAAARAAcAAAAAAAEAAAASAAgAAAAAAAEAAAASAAcAAAAAAAEAAAANAAQAAAAJAAAAAAAPAAQAAAALAAAAAAAOAAQAAAAKAAAAAAAtAAMAAAAAAAEAAAAtAAQAAAAAAAEAAAAtAAUAAAAAAAEAAAAtAAYAAAAAAAEAAAAtAAcAAAAAAAEAAAAtAAgAAAAAAAEAAAAuAAMAAAAAAAEAAAAuAAQAAAAAAAEAAAAuAAUAAAAAAAEAAAAuAAYAAAAAAAEAAAAuAAcAAAAAAAEAAAAuAAgAAAAAAAEAAAAvAAMAAAAAAAEAAAAvAAQAAAAAAAEAAAAvAAUAAAAAAAEAAAAvAAYAAAAAAAEAAAAvAAcAAAAAAAEAAAAvAAgAAAAAAAEAAAAwAAMAAAAAAAEAAAAwAAQAAAAAAAEAAAAwAAUAAAAAAAEAAAAwAAYAAAAAAAEAAAAwAAcAAAAAAAEAAAAwAAgAAAAAAAEAAAAxAAMAAAAAAAEAAAAxAAQAAAAAAAEAAAAxAAUAAAAAAAEAAAAxAAYAAAAAAAEAAAAxAAcAAAAAAAEAAAAxAAgAAAAAAAEAAAA8AAMAAAAAAAEAAAA8AAQAAAAAAAEAAAA8AAUAAAAAAAEAAAA8AAYAAAAAAAEAAAA8AAcAAAAAAAEAAAA8AAgAAAAAAAEAAAAqAAIAAAAAAAAAAAAqAAMAAAAAAAEAAAAqAAQAAAAAAAEAAAAqAAUAAAAAAAEAAAAqAAYAAAAAAAEAAAAqAAcAAAAAAAEAAAAqAAgAAAAAAAEAAAArAAIAAAAAAAAAAAArAAMAAAAAAAEAAAArAAQAAAAAAAEAAAArAAUAAAAAAAEAAAArAAYAAAAAAAEAAAArAAcAAAAAAAEAAAArAAgAAAAAAAEAAAAsAAIAAAAAAAAAAAAsAAMAAAAAAAEAAAAsAAQAAAAAAAEAAAAsAAUAAAAAAAEAAAAsAAYAAAAAAAEAAAAsAAcAAAAAAAEAAAAsAAgAAAAAAAEAAAAtAAIAAAAAAAAAAAAuAAIAAAAAAAAAAAAvAAIAAAAAAAAAAAAwAAIAAAAAAAAAAAAxAAIAAAAAAAAAAAA8AAIAAAAAAAAAAAA9AAIAAAAAAAAAAAA9AAMAAAAAAAEAAAA9AAQAAAAAAAEAAAA9AAUAAAAAAAEAAAA9AAYAAAAAAAEAAAA9AAcAAAAAAAEAAAA9AAgAAAAAAAEAAAA+AAIAAAAAAAAAAAA+AAMAAAAAAAEAAAA+AAQAAAAAAAEAAAA+AAUAAAAAAAEAAAA+AAYAAAAAAAEAAAA+AAcAAAAAAAEAAAA+AAgAAAAAAAEAAAA/AAIAAAAAAAAAAAA/AAMAAAAAAAEAAAA/AAQAAAAAAAEAAAA/AAUAAAAAAAEAAAA/AAYAAAAAAAEAAAA/AAcAAAAAAAEAAAA/AAgAAAAAAAEAAABAAAIAAAAAAAAAAABAAAMAAAAAAAEAAABAAAQAAAAAAAEAAABAAAUAAAAAAAEAAABAAAYAAAAAAAEAAABAAAcAAAAAAAEAAABAAAgAAAAAAAEAAABBAAIAAAAAAAAAAABBAAMAAAAAAAEAAABBAAQAAAAAAAEAAABBAAUAAAAAAAEAAABBAAYAAAAAAAEAAABBAAcAAAAAAAEAAABBAAgAAAAAAAEAAABCAAIAAAAAAAAAAABCAAMAAAAAAAEAAABCAAQAAAAAAAEAAABCAAUAAAAAAAEAAABCAAYAAAAAAAEAAABCAAcAAAAAAAEAAABCAAgAAAAAAAEAAABDAAIAAAAAAAAAAABDAAMAAAAAAAEAAABDAAQAAAAAAAEAAABDAAUAAAAAAAEAAABDAAYAAAAAAAEAAABDAAcAAAAAAAEAAABDAAgAAAAAAAEAAABEAAIAAAAAAAAAAABEAAMAAAAAAAEAAABEAAQAAAAAAAEAAABEAAUAAAAAAAEAAABEAAYAAAAAAAEAAABEAAcAAAAAAAEAAABEAAgAAAAAAAEAAABFAAIAAAAAAAAAAABFAAMAAAAAAAEAAABFAAQAAAAAAAEAAABFAAUAAAAAAAEAAABFAAYAAAAAAAEAAABFAAcAAAAAAAEAAABFAAgAAAAAAAEAAABGAAIAAAAAAAAAAABGAAMAAAAAAAEAAABGAAQAAAAAAAEAAABGAAUAAAAAAAEAAABGAAYAAAAAAAEAAABGAAcAAAAAAAEAAABGAAgAAAAAAAEAAABHAAIAAAAAAAAAAABHAAMAAAAAAAEAAABHAAQAAAAAAAEAAABHAAUAAAAAAAEAAABHAAYAAAAAAAEAAABHAAcAAAAAAAEAAABHAAgAAAAAAAEAAABIAAIAAAAAAAAAAABIAAMAAAAAAAEAAABIAAQAAAAAAAEAAABIAAUAAAAAAAEAAABIAAYAAAAAAAEAAABIAAcAAAAAAAEAAABIAAgAAAAAAAEAAABJAAIAAAAAAAAAAABJAAMAAAAAAAEAAABJAAQAAAAAAAEAAABJAAUAAAAAAAEAAABJAAYAAAAAAAEAAABJAAcAAAAAAAEAAABJAAgAAAAAAAEAAABKAAIAAAAAAAAAAABKAAMAAAAAAAEAAABKAAQAAAAAAAEAAABKAAUAAAAAAAEAAABKAAYAAAAAAAEAAABKAAcAAAAAAAEAAABKAAgAAAAAAAEAAABLAAIAAAAAAAAAAABLAAMAAAAAAAEAAABLAAQAAAAAAAEAAABLAAUAAAAAAAEAAABLAAYAAAAAAAEAAABLAAcAAAAAAAEAAABLAAgAAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_u5sy4")
+
 [node name="player" parent="." unique_id=1194610403 groups=["Player"] instance=ExtResource("1_uwrxv")]
-position = Vector2(316, 250)
+position = Vector2(14, 69)
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=831979258]
+visible = false
 position = Vector2(23, -31)
 zoom = Vector2(4, 4)
 
@@ -212,10 +195,10 @@ zoom = Vector2(4, 4)
 
 [node name="PlayerHealthBar" type="TextureProgressBar" parent="player/CanvasLayer" unique_id=140445613]
 custom_minimum_size = Vector2(3, 3)
-offset_left = 8.000061
-offset_top = 72.0
-offset_right = 57.74511
-offset_bottom = 237.66666
+offset_left = -7.999998
+offset_top = 248.0
+offset_right = 41.74505
+offset_bottom = 413.66666
 scale = Vector2(0.98502135, 1.3075838)
 fill_mode = 3
 nine_patch_stretch = true
@@ -223,6 +206,6 @@ texture_under = SubResource("AtlasTexture_u5sy4")
 texture_progress = SubResource("AtlasTexture_0tnpc")
 
 [node name="Enemy" parent="." unique_id=965967595 instance=ExtResource("5_iywne")]
-position = Vector2(17, 301)
+position = Vector2(987, 4)
 
 [connection signal="body_entered" from="world/Deadzone" to="player" method="_on_deadzone_body_entered"]

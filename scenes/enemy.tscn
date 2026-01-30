@@ -325,7 +325,7 @@ height = 48.0
 radius = 161.034
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwavj"]
-size = Vector2(67.61025, 50.439392)
+size = Vector2(51.512573, 50.439392)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nenq2"]
 atlas = ExtResource("6_xwavj")
@@ -366,7 +366,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=625532241]
-position = Vector2(15.5610895, 6.9756613)
+position = Vector2(7.5122504, 6.9756613)
 shape = SubResource("RectangleShape2D_xwavj")
 
 [node name="FloorChecker" type="RayCast2D" parent="." unique_id=824308954]

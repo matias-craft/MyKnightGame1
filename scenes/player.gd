@@ -3,8 +3,8 @@ extends CharacterBody2D
 # --- CONFIGURATION ---
 const SPEED = 300.0
 const JUMP_VELOCITY = -300.0
-const DASH_SPEED = 1000.0
-const DASH_DURATION = 0.5
+const DASH_SPEED = 1200.0
+const DASH_DURATION = 0.7
 const DASH_COOLDOWN = 5.0
 const SLIDE_SPEED = 500.0
 const SLIDE_DURATION = 1
