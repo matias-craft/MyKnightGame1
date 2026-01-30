@@ -269,9 +269,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mx1m4")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -379,7 +379,7 @@ animations = [{
 height = 36.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_487ah"]
-size = Vector2(31, 38)
+size = Vector2(72, 41)
 
 [node name="player" type="CharacterBody2D" unique_id=1194610403]
 collision_layer = 2
@@ -401,7 +401,7 @@ shape = SubResource("CapsuleShape2D_jej6c")
 position = Vector2(-11, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwordArea" unique_id=355448254]
-position = Vector2(71.5, -14)
+position = Vector2(43, -13)
 shape = SubResource("RectangleShape2D_487ah")
 disabled = true
 

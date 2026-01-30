@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var stopping_distance: float = 55.0 
 @export var max_health: int = 50
 
+
 # --- STATE MACHINE ---
 enum State { PATROL, CHASE, ATTACKING, DEAD }
 var current_state = State.PATROL
@@ -17,11 +18,18 @@ var can_attack = true
 var current_health: int = 50
 
 @onready var sprite = $AnimatedSprite2D
+@onready var health_bar = $HealthBar # Make sure this name matches the node!
 @onready var floor_checker = $FloorChecker 
-
 func _ready():
 	current_health = max_health
+	# Setup the bar values automatically
+	if health_bar:
+		health_bar.max_value = max_health
+		health_bar.value = current_health
 	add_to_group("Enemy")
+
+
+
 
 func _physics_process(delta: float) -> void:
 	if current_state == State.DEAD:
@@ -52,33 +60,21 @@ func _patrol_logic():
 		sprite.flip_h = !sprite.flip_h
 		floor_checker.position.x *= -1 
 
-func _chase_logic():
-	if not player:
-		current_state = State.PATROL
-		return
-
-	# Fixed the typo here: changed dir_x_to_player to dist_to_player
-	var dist_to_player = player.global_position.x - global_position.x
-	var dir = sign(dist_to_player)
-	
-	sprite.flip_h = dir < 0
-	floor_checker.position.x = abs(floor_checker.position.x) * dir
-
-	if abs(dist_to_player) > stopping_distance:
-		velocity.x = dir * speed
-		sprite.play("run")
-		if is_on_floor() and (is_on_wall() or not floor_checker.is_colliding()):
-			velocity.y = jump_velocity
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		sprite.play("idle")
 
 # --- HEALTH & DAMAGE ---
 
 func take_damage(amount: int):
 	if current_state == State.DEAD: return
+	
 	current_health -= amount
 	
+	# UPDATE THE BAR HERE
+	if health_bar:
+		health_bar.value = current_health
+	
+	print("Skeleton Health: ", current_health)
+	
+	# Visual hit effect
 	sprite.modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = Color.WHITE
@@ -121,3 +117,28 @@ func _on_detection_area_body_exited(body):
 	if body == player:
 		player = null
 		current_state = State.PATROL
+func _chase_logic():
+	if not player:
+		current_state = State.PATROL
+		return
+
+	var dist_to_player = player.global_position.x - global_position.x
+	var abs_dist = abs(dist_to_player)
+	var dir = sign(dist_to_player)
+	
+	sprite.flip_h = dir < 0
+	floor_checker.position.x = abs(floor_checker.position.x) * dir
+
+	if abs_dist > stopping_distance:
+		velocity.x = dir * speed
+		sprite.play("run")
+		if is_on_floor() and (is_on_wall() or not floor_checker.is_colliding()):
+			velocity.y = jump_velocity
+	else:
+		# --- FAIL-SAFE ATTACK ---
+		velocity.x = move_toward(velocity.x, 0, speed)
+		sprite.play("idle")
+		
+		# If we are close and the cooldown is ready, ATTACK!
+		if can_attack:
+			_perform_attack(player)

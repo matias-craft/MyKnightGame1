@@ -325,7 +325,7 @@ height = 48.0
 radius = 161.034
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwavj"]
-size = Vector2(41.85395, 25.926983)
+size = Vector2(67.61025, 50.439392)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nenq2"]
 atlas = ExtResource("6_xwavj")
@@ -343,17 +343,17 @@ script = ExtResource("1_c4w8v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=404855014]
 sprite_frames = SubResource("SpriteFrames_gst0f")
-animation = &"death"
+animation = &"idle"
 autoplay = "idle"
-frame = 12
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=991587759]
+visible = false
 z_index = 2
 position = Vector2(-3, 9)
 shape = SubResource("CapsuleShape2D_5uy6h")
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=396060795]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -366,21 +366,24 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=625532241]
-position = Vector2(28.439238, -0.085348636)
+position = Vector2(15.5610895, 6.9756613)
 shape = SubResource("RectangleShape2D_xwavj")
 
 [node name="FloorChecker" type="RayCast2D" parent="." unique_id=824308954]
+visible = false
 position = Vector2(12.878142, 30.048998)
 
 [node name="WallChecker" type="RayCast2D" parent="." unique_id=2143047520]
+visible = false
 position = Vector2(22.536749, 1.0731785)
 target_position = Vector2(8.585428, 0)
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=357580458]
+[node name="HealthBar" type="TextureProgressBar" parent="." unique_id=357580458]
 offset_left = -24.683104
 offset_top = -23.609926
 offset_right = 22.371653
 offset_bottom = -17.170855
+max_value = 50.0
 nine_patch_stretch = true
 texture_under = SubResource("AtlasTexture_nenq2")
 texture_progress = SubResource("AtlasTexture_gst0f")

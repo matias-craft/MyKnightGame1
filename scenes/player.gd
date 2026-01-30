@@ -3,11 +3,11 @@ extends CharacterBody2D
 # --- CONFIGURATION ---
 const SPEED = 300.0
 const JUMP_VELOCITY = -300.0
-const DASH_SPEED = 900.0
-const DASH_DURATION = 0.2
-const DASH_COOLDOWN = 1.0
+const DASH_SPEED = 1000.0
+const DASH_DURATION = 0.5
+const DASH_COOLDOWN = 5.0
 const SLIDE_SPEED = 500.0
-const SLIDE_DURATION = 0.4
+const SLIDE_DURATION = 1
 
 # Preload your ghost scene for dashing
 const GHOST_SCENE = preload("res://scenes/dash_ghost.tscn")
@@ -194,4 +194,4 @@ func add_ghost() -> void:
 
 func _on_sword_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy") and body.has_method("take_damage"):
-		body.take_damage(25)
+		body.take_damage(5)
